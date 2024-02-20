@@ -38,6 +38,8 @@ export class AppComponent implements OnInit {
             console.log('Success!');
             console.log(json);
 
+            //var pretty = JSON.stringify(obj, undefined, 4);
+
             this.jsonString = JSON.stringify(json);
           },
           error: (error) => {
@@ -45,6 +47,13 @@ export class AppComponent implements OnInit {
             this.jsonString = error.error;
           }
         });
-    }  
+    } 
+     
+  }
+  prettyfied(){   
+
+    let obj = JSON.parse(this.jsonString);
+
+    this.jsonString = JSON.stringify(obj, undefined, 4);
   }
 }

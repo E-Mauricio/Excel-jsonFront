@@ -1,18 +1,12 @@
 <h1>JSON CONVERTER</h1>
 
-<!-- <input type="file" class="file-input"
-       (change)="onFileSelected($event)" #fileUpload>
-
-<div class="file-upload">
-   {{fileName || "No file uploaded yet."}}
-</div> -->
-
 <div class="container">
   <div>
     <label for="fileUpload" class="file-upload">
       <input type="file" accept=".xls, .xlsx" id = "fileUpload" class="file-input" (change)="onFileSelected($event)" />
       Subir Archivo
     </label>
+    <button id="convertButton" class="file-upload" (click)="prettyfied()">Pretty</button>
     <div *ngIf="!fileName" id="fileNameDisplay" class="file-upload">No se ha subido ningun archivo.</div>
   </div>
 
@@ -20,17 +14,4 @@
     <textarea id="jsonInput" class="json-input" readonly>{{jsonString}}</textarea>
   </div>
 </div>
-
-<!-- <div>
-  <input type="file" class="file-input"
-  (change)="onFileSelected($event)" #fileUpload/>
-  <div class="file-upload">
-    {{fileName || "No file uploaded yet."}}
- </div>
-</div>
-
-<div>
-  <textarea class="json-input" >{{jsonString}}</textarea>
-</div> -->
-
 <router-outlet></router-outlet>
