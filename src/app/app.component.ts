@@ -18,23 +18,6 @@ export class AppComponent implements OnInit {
   constructor(
     private webApiService: WebServiceService,
   ) { }
-
-  addProduct() { 
-
-    console.log('file upload!');
-
-    const data = "Hello from the front end!";
-
-    debugger;
-
-    this.webApiService.callToApi(data).subscribe({
-      next: () => {
-        console.log('Success!');
-      }
-    })
-
-    console.log('Went to the API!'); 
-  }
   
   onFileSelected(event: any) {
 
