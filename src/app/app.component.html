@@ -1,13 +1,36 @@
-<div>JSON</div>
+<h1>JSON CONVERTER</h1>
 
-<div class="mb-3">
-  <label>Upload File</label>
-  <input class="form-control" formControlName="image" type="file"
-    id="productImage" name="productImage" >
+<!-- <input type="file" class="file-input"
+       (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload">
+   {{fileName || "No file uploaded yet."}}
+</div> -->
+
+<div class="container">
+  <div>
+    <label for="fileUpload" class="file-upload">
+      <input type="file" accept=".xls, .xlsx" id = "fileUpload" class="file-input" (change)="onFileSelected($event)" />
+      Subir Archivo
+    </label>
+    <div *ngIf="!fileName" id="fileNameDisplay" class="file-upload">No se ha subido ningun archivo.</div>
+  </div>
+
+  <div>
+    <textarea id="jsonInput" class="json-input" readonly>{{jsonString}}</textarea>
+  </div>
 </div>
 
-<button type="submit" class="btn btn-success" (click)="addProduct()">
-  Save
-</button>
+<!-- <div>
+  <input type="file" class="file-input"
+  (change)="onFileSelected($event)" #fileUpload/>
+  <div class="file-upload">
+    {{fileName || "No file uploaded yet."}}
+ </div>
+</div>
+
+<div>
+  <textarea class="json-input" >{{jsonString}}</textarea>
+</div> -->
 
 <router-outlet></router-outlet>

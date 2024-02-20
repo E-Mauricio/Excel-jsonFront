@@ -10,6 +10,8 @@ import { WebServiceService } from './services/web.service.service'; // Import th
 export class AppComponent implements OnInit {
 
   title = 'Excel-json';
+  fileName: string | undefined = undefined;
+  jsonString: string = '';
 
   ngOnInit(): void {}
   
@@ -17,11 +19,13 @@ export class AppComponent implements OnInit {
     private webApiService: WebServiceService,
   ) { }
 
-  addProduct() {
+  addProduct() { 
 
     console.log('file upload!');
 
-    const data = "Hello from the front end!"
+    const data = "Hello from the front end!";
+
+    debugger;
 
     this.webApiService.callToApi(data).subscribe({
       next: () => {
@@ -30,5 +34,38 @@ export class AppComponent implements OnInit {
     })
 
     console.log('Went to the API!'); 
+  }
+  
+  onFileSelected(event: any) {
+
+    const file:File = event.target.files[0];
+
+    if (file) {
+
+        this.fileName = file.name;
+
+        const formData = new FormData();
+
+        formData.append("file", file);
+
+        //Here i can go to my services and call the upload function
+        this.webApiService.uploadFile(formData).subscribe({
+          next: (json) => {
+            console.log('Success!');
+            console.log(json);
+
+            this.jsonString = JSON.stringify(json);
+          },
+          error: (error) => {
+            //console.log('Error!');
+            debugger;
+            console.log(error.error);
+            this.jsonString = error.error;
+          }
+        });
+        //const upload$ = this.http.post("/api/thumbnail-upload", formData);
+
+        //upload$.subscribe();
+    }  
   }
 }
