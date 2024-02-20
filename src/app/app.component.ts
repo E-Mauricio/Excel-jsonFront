@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WebServiceService } from './services/web.service.service'; // Import the missing WebApiService class
+import { User } from './model/user';
 
 
 @Component({
@@ -40,15 +41,10 @@ export class AppComponent implements OnInit {
             this.jsonString = JSON.stringify(json);
           },
           error: (error) => {
-            //console.log('Error!');
-            debugger;
             console.log(error.error);
             this.jsonString = error.error;
           }
         });
-        //const upload$ = this.http.post("/api/thumbnail-upload", formData);
-
-        //upload$.subscribe();
     }  
   }
 }
