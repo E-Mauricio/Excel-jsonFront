@@ -11,16 +11,14 @@ export class WebServiceService {
 
   baseApiUrl: string = environment.baseApiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-  //baseApiUrl: string = 'https://localhost:5001/api/WebControllers';
-
-  endPoint : string = this.baseApiUrl + '/api/WebControllers/SubirArchivo';
+  endPoint: string = this.baseApiUrl + '/api/Converter/SubirArchivo';
 
   uploadFile(file: FormData): Observable<string> {
     console.log('inside the controller!');
     console.log(file);
 
-    return this.http.post<string>(this.endPoint, file);
+    return this._http.post<string>(this.endPoint, file);
   }
 }
