@@ -1,0 +1,5 @@
+
+docker build -t gascom-test .
+docker tag gascom-test:v1.0 gascom.azurecr.io/gascom/web:v1.0
+docker run --name gascom-test -it --rm -p 4200:80 web-encuesta-tec:v1.0
+docker run --rm -p 4201:80 gascom-test
